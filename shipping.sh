@@ -8,7 +8,7 @@ cd /app
 unzip /tmp/shipping.zip
 
 yum install mysql -y 
-mysql -h mysql.kkakarla.online -uroot -pRoboShop@1 < /app/schema/shipping.sql
+mysql -h <MYSQL-SERVER-IPADDRESS> -uroot -pRoboShop@1 < /app/schema/shipping.sql 
 
 systemctl daemon-reload
 systemctl enable shipping 

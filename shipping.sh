@@ -7,6 +7,10 @@ curl -L -o /tmp/shipping.zip https://roboshop-artifacts.s3.amazonaws.com/shippin
 cd /app 
 unzip /tmp/shipping.zip
 
+cd /app
+mvn clean package
+mv target/shipping-1.0.jar shipping.jar
+
 yum install mysql -y 
 mysql -h mysql.kkakarla.online -uroot -pRoboShop@1 < /app/schema/shipping.sql
 

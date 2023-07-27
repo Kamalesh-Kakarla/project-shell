@@ -1,3 +1,5 @@
+nodejs(){
+
 log=/tmp/${component}.log
 d='date'
 echo "The script starts at -" ; $d #| tee -a ${log}
@@ -34,3 +36,5 @@ systemctl daemon-reload
 systemctl enable ${component} 
 systemctl restart ${component}
 
+
+}

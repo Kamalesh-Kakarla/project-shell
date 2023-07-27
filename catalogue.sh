@@ -1,4 +1,4 @@
-log=${log}
+log=/tmp/catalogue.log
 
 echo -e "\e[36m <<<<<<<<<< creating a catalogue service file >>>>>>>>>>\e[0m" | tee -a ${log}
 cp catalogue.service /etc/systemd/system/catalogue.service &>>${log}

@@ -1,3 +1,5 @@
+log=/tmp/roboshop.log
+
 func_apppreq(){
 
   echo -e "\e[36m <<<<<<<<<< creating app directory >>>>>>>>>>\e[0m" | tee -a ${log}
@@ -53,18 +55,18 @@ func_systemd
 func_java(){
 
   echo -e "\e[36m <<<<<<<<<< creating service file >>>>>>>>>>\e[0m" | tee -a ${log}
-  cp ${component}.service /etc/systemd/system/${component}.service
+  cp ${component}.service /etc/systemd/system/${component}.service &>>${log}
   echo -e "\e[36m <<<<<<<<<< Installing Maven and creating user roboshop >>>>>>>>>>\e[0m" | tee -a ${log}
-  yum install maven -y
-  useradd roboshop
+  yum install maven -y &>>${log}
+  useradd roboshop &>>${log}
 
   func_apppreq
 
-  mvn clean package
-  mv target/${component}-1.0.jar ${component}.jar
+  mvn clean package &>>${log}
+  mv target/${component}-1.0.jar ${component}.jar &>>${log}
   echo -e "\e[36m <<<<<<<<<< Installing mysql >>>>>>>>>>\e[0m" | tee -a ${log}
-  yum install mysql -y 
-  mysql -h mysql.kkakarla.online -uroot -pRoboShop@1 < /app/schema/${component}.sql
+  yum install mysql -y &>>${log}
+  mysql -h mysql.kkakarla.online -uroot -pRoboShop@1 < /app/schema/${component}.sql &>>${log}
 
   echo -e "\e[36m <<<<<<<<<< restarting the services >>>>>>>>>>\e[0m" | tee -a ${log}
 

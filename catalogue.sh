@@ -8,6 +8,8 @@ echo -e "\e[36m <<<<<<<<<< installing nodejs >>>>>>>>>>\e[0m"
 yum install nodejs -yecho -e "\e[36m <<<<<<<<<< >>>>>>>>>>\e[0m"
 echo -e "\e[36m <<<<<<<<<< adding robo shop user >>>>>>>>>>\e[0m"
 useradd roboshop
+echo -e "\e[36m <<<<<<<<<< removing app directory >>>>>>>>>>\e[0m"
+rm -rf /app
 echo -e "\e[36m <<<<<<<<<< creating app directory >>>>>>>>>>\e[0m"
 mkdir /app
 echo -e "\e[36m <<<<<<<<<< creating a zip file >>>>>>>>>\e[0m"

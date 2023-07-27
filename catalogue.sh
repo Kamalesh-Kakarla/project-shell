@@ -1,30 +1,30 @@
 echo -e "\e[36m <<<<<<<<<< creating a catalogue service file >>>>>>>>>>\e[0m"
-cp catalogue.service /etc/systemd/system/catalogue.service
+cp catalogue.service /etc/systemd/system/catalogue.service >/temp/catalogue.log
 echo -e "\e[36m <<<<<<<<<< creating mongodb repo >>>>>>>>>>\e[0m"
-cp mongo.repo /etc/yum.repos.d/mongo.repo
+cp mongo.repo /etc/yum.repos.d/mongo.repo >/temp/catalogue.log
 echo -e "\e[36m <<<<<<<<<< Installing rpms from internet >>>>>>>>>>\e[0m"
-curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+curl -sL https://rpm.nodesource.com/setup_lts.x | bash >/temp/catalogue.log
 echo -e "\e[36m <<<<<<<<<< installing nodejs >>>>>>>>>>\e[0m"
-yum install nodejs -yecho -e "\e[36m <<<<<<<<<< >>>>>>>>>>\e[0m"
+yum install nodejs -yecho -e >/temp/catalogue.log
 echo -e "\e[36m <<<<<<<<<< adding robo shop user >>>>>>>>>>\e[0m"
-useradd roboshop
+useradd roboshop >/temp/catalogue.log
 echo -e "\e[36m <<<<<<<<<< removing app directory >>>>>>>>>>\e[0m"
-rm -rf /app
+rm -rf /app >/temp/catalogue.log
 echo -e "\e[36m <<<<<<<<<< creating app directory >>>>>>>>>>\e[0m"
-mkdir /app
+mkdir /app >/temp/catalogue.log
 echo -e "\e[36m <<<<<<<<<< creating a zip file >>>>>>>>>\e[0m"
-curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip
+curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip >/temp/catalogue.log
 echo -e "\e[36m <<<<<<<<<< changing to app directory >>>>>>>>>>\e[0m"
-cd /app
+cd /app >/temp/catalogue.log
 echo -e "\e[36m <<<<<<<<<< unzip the catalogue file >>>>>>>>>>\e[0m"
-unzip /tmp/catalogue.zip
+unzip /tmp/catalogue.zip >/temp/catalogue.log
 echo -e "\e[36m <<<<<<<<<< changing to app directory >>>>>>>>>>\e[0m"
-cd /app
+cd /app >/temp/catalogue.log
 echo -e "\e[36m <<<<<<<<<< npms installing >>>>>>>>>>\e[0m"
-npm install 
+npm install >/temp/catalogue.log
 echo -e "\e[36m <<<<<<<<<< installing the mongodb org >>>>>>>>>>>\e[0m"
-yum install mongodb-org-shell -y
-mongo --host mongodb.kkakarla.online </app/schema/catalogue.js
+yum install mongodb-org-shell -y >/temp/catalogue.log
+mongo --host mongodb.kkakarla.online </app/schema/catalogue.js >/temp/catalogue.log
 
 echo -e "\e[36m <<<<<<<<<< restarting the services >>>>>>>>>>\e[0m"
 systemctl daemon-reload

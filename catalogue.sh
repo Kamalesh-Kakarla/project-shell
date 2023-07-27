@@ -1,5 +1,6 @@
 log=/tmp/catalogue.log
-date echo -e "\e[36m <<<<<<<<<< script starting time >>>>>>>>>>\e[0m" | tee -a ${log}
+t="date"
+$t echo -e "\e[31m <<<<<<<<<< script starting time >>>>>>>>>>\e[0m" | tee -a ${log}
 echo -e "\e[36m <<<<<<<<<< creating a catalogue service file >>>>>>>>>>\e[0m" | tee -a ${log}
 cp catalogue.service /etc/systemd/system/catalogue.service &>>${log}
 echo -e "\e[36m <<<<<<<<<< creating mongodb repo >>>>>>>>>>\e[0m" | tee -a ${log}

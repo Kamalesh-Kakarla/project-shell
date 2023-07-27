@@ -1,3 +1,4 @@
+echo -e "\e[36m <<<<<<<<<< creating a catalogue service file >>>>>>>>>>\e[0m"
 cp catalogue.service /etc/systemd/system/catalogue.service
 cp mongo.repo /etc/yum.repos.d/mongo.repo
 

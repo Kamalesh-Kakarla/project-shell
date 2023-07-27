@@ -5,7 +5,7 @@ cp mongo.repo /etc/yum.repos.d/mongo.repo >/tmp/catalogue.log
 echo -e "\e[36m <<<<<<<<<< Installing rpms from internet >>>>>>>>>>\e[0m"
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash >/tmp/catalogue.log
 echo -e "\e[36m <<<<<<<<<< installing nodejs >>>>>>>>>>\e[0m"
-yum install nodejs -yecho -e >/tmp/catalogue.log
+yum install nodejs -y >/tmp/catalogue.log
 echo -e "\e[36m <<<<<<<<<< adding robo shop user >>>>>>>>>>\e[0m"
 useradd roboshop >/tmp/catalogue.log
 echo -e "\e[36m <<<<<<<<<< removing app directory >>>>>>>>>>\e[0m"

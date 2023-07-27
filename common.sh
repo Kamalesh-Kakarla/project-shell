@@ -71,5 +71,21 @@ func_java(){
   echo -e "\e[36m <<<<<<<<<< restarting the services >>>>>>>>>>\e[0m" | tee -a ${log}
 
   func_systemd
+}
 
+func_python(){
+  
+  cp ${component}.service /etc/systemd/system/${component}.service
+  
+  yum install python36 gcc python3-devel -y
+  useradd roboshop
+  mkdir /app
+  curl -L -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip
+  cd /app
+  unzip /tmp/${component}.zip
+  cd /app
+  pip3.6 install -r requirements.txt
+  
+  func_systemd
+  
 }

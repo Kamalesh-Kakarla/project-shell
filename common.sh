@@ -5,7 +5,7 @@ func_apppreq(){
   echo -e "\e[36m <<<<<<<<<< creating app directory >>>>>>>>>>\e[0m" | tee -a ${log}
   mkdir /app &>>${log}
   echo -e "\e[36m <<<<<<<<<< creating a zip file >>>>>>>>>\e[0m" | tee -a ${log}
-  curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip &>>${log}
+  curl - L -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip &>>${log}
   echo -e "\e[36m <<<<<<<<<< changing to app directory >>>>>>>>>>\e[0m" | tee -a ${log}
   cd /app &>>${log}
   echo -e "\e[36m <<<<<<<<<< unzip the ${component} file >>>>>>>>>>\e[0m" | tee -a ${log}
@@ -62,7 +62,9 @@ func_java(){
 
   func_apppreq
 
+  echo -e "\e[36m <<<<<<<<<< cleaning packages >>>>>>>>>>\e[0m" | tee -a ${log}
   mvn clean package &>>${log}
+  echo -e "\e[36m <<<<<<<<<< moving jar files >>>>>>>>>>\e[0m" | tee -a ${log}
   mv target/${component}-1.0.jar ${component}.jar &>>${log}
   echo -e "\e[36m <<<<<<<<<< Installing mysql >>>>>>>>>>\e[0m" | tee -a ${log}
   yum install mysql -y &>>${log}

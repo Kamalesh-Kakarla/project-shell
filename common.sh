@@ -60,6 +60,8 @@ func_java(){
   yum install maven -y &>>${log}
   useradd roboshop &>>${log}
 
+  rm -rf cd /app
+
   func_apppreq
 
   echo -e "\e[36m <<<<<<<<<< cleaning packages >>>>>>>>>>\e[0m" | tee -a ${log}

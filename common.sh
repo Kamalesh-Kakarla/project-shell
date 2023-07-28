@@ -74,18 +74,23 @@ func_java(){
 }
 
 func_python(){
-  
+
+  echo -e "\e[36m <<<<<<<<<< creating a paytm service file >>>>>>>>>>\e[0m" | tee -a ${log}
   cp ${component}.service /etc/systemd/system/${component}.service
-  
+  echo -e "\e[36m <<<<<<<<<< python installation >>>>>>>>>>\e[0m" | tee -a ${log}
   yum install python36 gcc python3-devel -y
+  echo -e "\e[36m <<<<<<<<<< removing existing app >>>>>>>>>>\e[0m" | tee -a ${log}
+  rm -rf cd /app
+  echo -e "\e[36m <<<<<<<<<< adding user and creating app >>>>>>>>>>\e[0m" | tee -a ${log}
   useradd roboshop
   mkdir /app
+  echo -e "\e[36m <<<<<<<<<< Installing app code >>>>>>>>>>\e[0m" | tee -a ${log}
   curl -L -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip
   cd /app
   unzip /tmp/${component}.zip
   cd /app
   pip3.6 install -r requirements.txt
-  
+  echo -e "\e[36m <<<<<<<<<< restarting the services >>>>>>>>>>\e[0m" | tee -a ${log}
   func_systemd
   
 }

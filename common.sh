@@ -9,7 +9,7 @@ func_apppreq(){
   echo -e "\e[36m <<<<<<<<<< changing to app directory >>>>>>>>>>\e[0m" | tee -a ${log}
   cd /app &>>${log}
   echo -e "\e[36m <<<<<<<<<< unzip the ${component} file >>>>>>>>>>\e[0m" | tee -a ${log}
-  unzip /tmp/${component} &>>${log}
+  unzip /tmp/${component}.zip &>>${log}
   echo -e "\e[36m <<<<<<<<<< changing to app directory >>>>>>>>>>\e[0m" | tee -a ${log}
   cd /app &>>${log}
 

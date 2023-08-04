@@ -1,4 +1,5 @@
-component=user
+component=shipping
+schema_type=mysql
 source common.sh
 
-func_nodejs
+func_java
